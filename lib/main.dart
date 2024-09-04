@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
        // Updated to use your custom light theme
       darkTheme: TAppTheme.darkTheme, // Custom dark theme
       themeMode: ThemeMode.system, // Automatically switch theme based on system setting
-      home: const SplashScreen(),
+      home:  WelcomeScreen(),
     );
   }
 }

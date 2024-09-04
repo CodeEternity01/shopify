@@ -7,43 +7,49 @@ import 'package:flutter_app/constant/image.dart';
 import 'package:flutter_app/constant/size.dart';
 import 'package:get/get.dart';
 
-import 'package:http/http.dart';
-
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    var brightness = MediaQuery.of(context).platformBrightness;
-    final isDarkMode = brightness == Brightness.dark;
+    final size = MediaQuery.of(context).size;
+    final isDarkMode = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: isDarkMode ? tSecondaryColor : tPrimaryColor,
-      body: Container(
+      backgroundColor: isDarkMode ? tSecondaryColor : Colors.white,
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(defaultSize),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Three section first image second text and in third we give a button for login and signup
-            Image(
-              image: AssetImage(tWelcomeScreenImage),
-              height: height * 0.55,
+            // Image section
+            Image.asset(
+              tWelcomeScreenImage,
+              height: size.height * 0.55,
             ),
 
-            const Column(children: [
-              Text(
-                tWelcomeTitle,
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                tWelcomeSubTitle,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                textAlign: TextAlign.center,
-              ),
-            ]),
+            const SizedBox(height: 20),
 
+            // Text section
+            const Text(
+              "Welcome to Virtual Garden",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Discover plants, grow your garden, and deepen your love for botany with interactive guides and care tips.",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                textAlign: TextAlign.center,
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // Button section
+            // Button section
             Row(
               children: [
                 Expanded(
@@ -52,14 +58,13 @@ class WelcomeScreen extends StatelessWidget {
                           toLogin(context);
                         },
                         style: OutlinedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40))),
-                    foregroundColor:  tSecondaryColor,
-                    backgroundColor:  Colors.white,
-                    fixedSize: const Size(10, 20),
-                    side: const BorderSide(color: tSecondaryColor),
-                  ),
-
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(40))),
+                          foregroundColor:  const Color(0xFF618867),
+                          backgroundColor: Colors.white,
+                          fixedSize: const Size(10, 20),
+                          side: const BorderSide(color: tSecondaryColor),
+                        ),
                         child: Text(tlogin.toUpperCase(),
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 19)))),
@@ -75,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40))),
                     foregroundColor: Colors.white,
-                    backgroundColor: tSecondaryColor,
+                    backgroundColor: const Color(0xFF618867),
                     fixedSize: const Size(10, 20),
                     side: const BorderSide(color: tSecondaryColor),
                   ),

@@ -1,52 +1,65 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
+import 'package:flutter_app/Authentication/repository/authentication_repo.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ApiScreen extends StatefulWidget {
+  const ApiScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ApiScreen> createState() => _ApiScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ApiScreenState extends State<ApiScreen> {
   List<dynamic> users = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Theme.of(context).primaryColor,
-          title: const Text('Login'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: fetchuser,
-          child: const Icon(Icons.refresh),
-        ),
-        body: users.isEmpty
-            ? const Center(child: Text('No user Found'))
-            : ListView.builder(itemBuilder: (context, index) {
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text('User List'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              // Use the logout method from the AuthenticationRepo
+              await AuthenticationRepo.instance.logOut();
+            },
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: fetchuser,
+        child: const Icon(Icons.refresh),
+      ),
+      body: users.isEmpty
+          ? const Center(child: Text('No user Found'))
+          : ListView.builder(
+              itemCount: users.length,
+              itemBuilder: (context, index) {
                 return Column(
                   children: [
                     ListTile(
-                      
-                      title: Text(users[index]['name']['first']+' '+users[index]['name']['last'],style: TextStyle(color: Colors.blue),),
+                      title: Text(
+                        '${users[index]['name']['first']} ${users[index]['name']['last']}',
+                        style: const TextStyle(color: Colors.blue),
+                      ),
                       subtitle: Text(users[index]['email']),
-                      tileColor: Color.fromARGB(255, 252, 169, 196),
-                     
+                      tileColor: const Color.fromARGB(255, 252, 169, 196),
                       leading: const CircleAvatar(
-            backgroundImage: AssetImage('assets/snacks.png'),
-            radius: 35,
-          ),
-                    
+                        backgroundImage: AssetImage('assets/snacks.png'),
+                        radius: 35,
+                      ),
                     ),
-                    const Divider(height: 0,thickness: 1,color: Colors.white,)
+                    const Divider(height: 0, thickness: 1, color: Colors.white),
                   ],
                 );
-              
-              }));
+              },
+            ),
+    );
   }
 
   void fetchuser() async {

@@ -39,16 +39,21 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     startAnimation();
   }
 
-  Future<void> startAnimation() async {
-    await Future.delayed(const Duration(milliseconds: 300));
+Future<void> startAnimation() async {
+  await Future.delayed(const Duration(milliseconds: 300));
+  if (mounted) {
     setState(() => animate = true);
-    _controller.forward();
-    await Future.delayed(const Duration(milliseconds: 2000));
+  }
+  _controller.forward();
+  await Future.delayed(const Duration(milliseconds: 2000));
+  if (mounted) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) =>  WelcomeScreen()),
+      MaterialPageRoute(builder: (context) => WelcomeScreen()),
     );
   }
+}
+
 
   @override
   void dispose() {

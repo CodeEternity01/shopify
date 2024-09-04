@@ -7,13 +7,13 @@ import 'package:flutter/foundation.dart'
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
-/// ```dart
+/// dart
 /// import 'firebase_options.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
-/// ```
+/// 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,37 +41,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDFwlMnd3jhf-5owSjKRh_vFwHiGHFt_Rw',
-    appId: '1:397060480663:web:3fd857c29516e830e113d2',
-    messagingSenderId: '397060480663',
-    projectId: 'flutterapp-85d0d',
-    authDomain: 'flutterapp-85d0d.firebaseapp.com',
-    storageBucket: 'flutterapp-85d0d.appspot.com',
+    apiKey: 'AIzaSyBidaOG9us4-l6ZDwJ8-pTwIKDo6O5BYyU',
+    appId: '1:185449724504:web:011eb4267d16644cc6e82d',
+    messagingSenderId: '185449724504',
+    projectId: 'ayurvan-b2bf2',
+    authDomain: 'ayurvan-b2bf2.firebaseapp.com',
+    storageBucket: 'ayurvan-b2bf2.appspot.com',
+    measurementId: 'G-TXJXJ9N8KP',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDNFCYOc7SeYxbGV8K83YXapTFet8_swuU',
-    appId: '1:397060480663:android:6cca9c1f4d55942ee113d2',
-    messagingSenderId: '397060480663',
-    projectId: 'flutterapp-85d0d',
-    storageBucket: 'flutterapp-85d0d.appspot.com',
+    apiKey: 'AIzaSyCfxePqJRyMDJNzX0Y9Bl9DFBzRUMGHVZU',
+    appId: '1:185449724504:android:5d0b9ec9f5c0b7a4c6e82d',
+    messagingSenderId: '185449724504',
+    projectId: 'ayurvan-b2bf2',
+    storageBucket: 'ayurvan-b2bf2.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD5P0Vv6aZWixsNHP8rRsPpN2C0OV2LKoQ',
-    appId: '1:397060480663:ios:4ca2b9555bdf4733e113d2',
-    messagingSenderId: '397060480663',
-    projectId: 'flutterapp-85d0d',
-    storageBucket: 'flutterapp-85d0d.appspot.com',
-    iosBundleId: 'com.example.flutterApp',
+    apiKey: 'AIzaSyA3UOnrvRuNikww-vJ9MRkDbvIW_AbxgIo',
+    appId: '1:185449724504:ios:d003c28d229ce4eec6e82d',
+    messagingSenderId: '185449724504',
+    projectId: 'ayurvan-b2bf2',
+    storageBucket: 'ayurvan-b2bf2.appspot.com',
+    iosClientId: '185449724504-be4p2bje6u27p2vbgken4er0gmu7prh2.apps.googleusercontent.com',
+    iosBundleId: 'com.example.ayurvan',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD5P0Vv6aZWixsNHP8rRsPpN2C0OV2LKoQ',
-    appId: '1:397060480663:ios:4ca2b9555bdf4733e113d2',
-    messagingSenderId: '397060480663',
-    projectId: 'flutterapp-85d0d',
-    storageBucket: 'flutterapp-85d0d.appspot.com',
-    iosBundleId: 'com.example.flutterApp',
+    apiKey: 'AIzaSyA3UOnrvRuNikww-vJ9MRkDbvIW_AbxgIo',
+    appId: '1:185449724504:ios:d003c28d229ce4eec6e82d',
+    messagingSenderId: '185449724504',
+    projectId: 'ayurvan-b2bf2',
+    storageBucket: 'ayurvan-b2bf2.appspot.com',
+    iosClientId: '185449724504-be4p2bje6u27p2vbgken4er0gmu7prh2.apps.googleusercontent.com',
+    iosBundleId: 'com.example.ayurvan',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBidaOG9us4-l6ZDwJ8-pTwIKDo6O5BYyU',
+    appId: '1:185449724504:web:20dca98a7f36d662c6e82d',
+    messagingSenderId: '185449724504',
+    projectId: 'ayurvan-b2bf2',
+    authDomain: 'ayurvan-b2bf2.firebaseapp.com',
+    storageBucket: 'ayurvan-b2bf2.appspot.com',
+    measurementId: 'G-6PWVL1YLNH',
   );
 }
